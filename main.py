@@ -20,10 +20,14 @@ def cb(msg: UserFillsMsg):
         print(content)
         notify(content)
 
+
 def main():
     info = Info()
 
-    sub: UserFillsSubscription = {"type": "userFills", "user": os.getenv("HYPERLIQUID_ADDRESS")}
+    sub: UserFillsSubscription = {
+        "type": "userFills",
+        "user": os.getenv("HYPERLIQUID_ADDRESS"),
+    }
     info.subscribe(sub, cb)
 
 
