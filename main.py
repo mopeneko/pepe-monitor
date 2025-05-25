@@ -10,7 +10,7 @@ def notify(msg: str):
 
 
 def cb(msg: UserFillsMsg):
-    if msg["data"]["isSnapshot"]:
+    if "isSnapshot" in msg["data"] and msg["data"]["isSnapshot"]:
         return
 
     fills = msg["data"]["fills"]
