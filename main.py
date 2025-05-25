@@ -14,11 +14,12 @@ def cb(msg: UserFillsMsg):
         return
 
     fills = msg["data"]["fills"]
+    content = ""
     for fill in fills:
         dt = datetime.fromtimestamp(fill["time"] / 1000)
-        content = f"{dt.strftime('%Y-%m-%d %H:%M:%S')} {fill['coin']} {fill['sz']} {fill['startPosition']} {fill['dir']}"
-        print(content)
-        notify(content)
+        content += f"{dt.strftime('%Y-%m-%d %H:%M:%S')} {fill['coin']} {fill['sz']} {fill['startPosition']} {fill['dir']}\n"
+    print(content)
+    notify(content)
 
 
 def main():
